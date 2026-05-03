@@ -44,6 +44,10 @@ body {
   background: var(--clip-bg);
 }
 
+html.clip-i18n-boot body {
+  visibility: hidden;
+}
+
 .clip-main {
   max-width: 40rem;
   margin: 0 auto;
@@ -200,4 +204,50 @@ code {
 
 .clip-dev-details .clip-muted {
   margin-bottom: 0;
+}
+
+.clip-lang-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--clip-border);
+  font-size: 0.9rem;
+  color: var(--clip-muted);
+}
+
+.clip-lang-switch__btn {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--clip-accent);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  padding: 0.25rem 0.35rem;
+  min-height: 44px;
+}
+
+.clip-lang-switch__btn:hover {
+  color: var(--clip-accent-hover);
+}
+
+.clip-lang-switch__btn:focus {
+  outline: 3px solid var(--clip-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.clip-lang-switch__btn.is-active {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--clip-text);
+}
+
+.clip-lang-switch__sep {
+  color: var(--clip-muted);
+  user-select: none;
 }

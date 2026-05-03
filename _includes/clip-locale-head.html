@@ -1,0 +1,36 @@
+<script id="clip-i18n-data" type="application/json">{{ site.data.clip_i18n | jsonify }}</script>
+<script>
+(function () {
+  function normalizeLang(tag) {
+    if (!tag || typeof tag !== "string") return null;
+    var t = tag.toLowerCase();
+    if (t === "ja" || t.indexOf("ja-") === 0) return "ja";
+    if (t === "en" || t.indexOf("en-") === 0) return "en";
+    return null;
+  }
+  function resolveLocaleFromEnv() {
+    try {
+      var st = normalizeLang(localStorage.getItem("clip_lang"));
+      if (st) return st;
+    } catch (e) {}
+    var list =
+      typeof navigator !== "undefined" && navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : typeof navigator !== "undefined" && navigator.language
+          ? [navigator.language]
+          : [];
+    for (var i = 0; i < list.length; i++) {
+      var n = normalizeLang(list[i]);
+      if (n) return n;
+    }
+    return "ja";
+  }
+  window.__clipResolveLocale = resolveLocaleFromEnv;
+  if (resolveLocaleFromEnv() === "en") {
+    document.documentElement.classList.add("clip-i18n-boot");
+  }
+})();
+</script>
+<script>
+  window.__CLIP_BASEURL__ = {{ '/' | relative_url | jsonify }};
+</script>

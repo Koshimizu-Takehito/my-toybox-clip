@@ -1,0 +1,62 @@
+# 利用者向け文言（ja / en 必ずペアで追加）。キーは home.banner.title のようにドット区切りで参照。
+ja:
+  meta:
+    title_home: "MyToybox App Clip"
+    title_404: "ページが見つかりません — MyToybox App Clip"
+  common:
+    app_store: "App Store で見る"
+    home: "ホーム"
+    store_pending: "アプリの入手先の案内は現在準備中です。"
+    lang_switch_hint: "言語"
+  home:
+    banner:
+      title: "共有リンク"
+      known: "このリンクは、MyToybox の特定の画面へ進むためのものです。対応する端末ではアプリが起動し、当該の画面が表示されます。アプリがない場合はこの案内ページのままです。"
+      unknown: "このリンクは特定の画面を指定しています。アプリ側に該当する画面がない場合は、一覧など別の画面へ進むことがあります。"
+    cta_suffix: " のフル版は App Store から入手できます。"
+    intro_heading: "MyToybox の画面へ"
+    intro_p1a: "このサイトは "
+    intro_p1b: " の共有リンク先を案内するページです。共有されたリンクを iPhone などで利用すると、アプリまたは App Clip が起動し、該当する画面が表示されます。"
+    intro_p2: "パソコンやアプリが入っていない環境では、このような説明ページのままになることがあります。フル版を入手する場合は App Store からどうぞ。"
+    dev_summary: "開発者向けメモ"
+    dev_html: 'サイトの運用・AASA・画面追加手順は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">リポジトリの README</a> を参照してください。'
+  clip_landing:
+    lead_a: "このリンクは、"
+    lead_b: " の該当する画面へ進むためのものです。対応する端末ではアプリが起動し、当該の画面が表示されます。"
+    muted_no_app: "アプリが入っていない場合は、この案内ページのままになります。"
+    dev_summary: "開発者向け"
+    dev_html: 'ソースや運用手順は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">README</a>、アプリ本体は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">my-toybox（GitHub）</a> を参照してください。'
+  not_found:
+    title: "ページが見つかりません — MyToybox App Clip"
+    body: 'お探しのページはありません。トップへ移動します。<a class="clip-secondary-link" href="__BASE__">トップへ</a>'
+
+en:
+  meta:
+    title_home: "MyToybox App Clip"
+    title_404: "Page not found — MyToybox App Clip"
+  common:
+    app_store: "View on the App Store"
+    home: "Home"
+    store_pending: "App Store information is not available yet."
+    lang_switch_hint: "Language"
+  home:
+    banner:
+      title: "Shared link"
+      known: "This link opens a specific screen in MyToybox. On supported devices the app launches and that screen appears. If the app is not installed, this page stays visible."
+      unknown: "This link targets a specific screen. If the app does not provide that screen, you may be taken to a list or another screen."
+    cta_suffix: " is available in full on the App Store."
+    intro_heading: "Screens in MyToybox"
+    intro_p1a: "This page describes shared links for "
+    intro_p1b: ". On an iPhone or similar device, the app or App Clip may open and show the corresponding screen."
+    intro_p2: "On a computer or without the app installed, you may only see this page. Get the full app from the App Store if you wish."
+    dev_summary: "Developer notes"
+    dev_html: 'See the <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">repository README</a> for operations, AASA, and how to add screens.'
+  clip_landing:
+    lead_a: "This link opens the corresponding screen in "
+    lead_b: ". On supported devices the app launches and that screen is shown."
+    muted_no_app: "Without the app installed, this informational page remains visible."
+    dev_summary: "For developers"
+    dev_html: 'Source and maintenance instructions are in the <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">README</a>; the app repo is <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">my-toybox on GitHub</a>.'
+  not_found:
+    title: "Page not found — MyToybox App Clip"
+    body: 'The page was not found. Redirecting to the home page. <a class="clip-secondary-link" href="__BASE__">Home</a>'

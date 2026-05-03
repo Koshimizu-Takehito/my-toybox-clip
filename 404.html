@@ -2,19 +2,25 @@
 permalink: /404.html
 layout: null
 ---
+{% assign clip_home = '/' | relative_url %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ページが見つかりません — MyToybox App Clip</title>
+  {% include clip-locale-head.html %}
+  <title data-i18n="not_found.title">{{ site.data.clip_i18n.ja.not_found.title | escape }}</title>
   <meta http-equiv="refresh" content="0; url={{ site.baseurl }}/">
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
+  <link rel="stylesheet" href="{{ '/assets/css/clip-landing.css' | relative_url }}">
   <script>
     window.location.replace("{{ site.baseurl }}/");
   </script>
 </head>
 <body>
-  <p>お探しのページはありません。トップへ移動します。<a href="{{ site.baseurl }}/">トップへ</a></p>
+  <main class="clip-main">
+    <p data-i18n-html="not_found.body">{{ site.data.clip_i18n.ja.not_found.body | replace: '__BASE__', clip_home }}</p>
+  </main>
+  <script defer src="{{ '/assets/js/clip-locale.js' | relative_url }}"></script>
 </body>
 </html>

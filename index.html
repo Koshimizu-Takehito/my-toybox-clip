@@ -4,18 +4,20 @@ title: "MyToybox App Clip"
 ---
 
 <section class="clip-card">
-  <h1 class="clip-section-title">MyToybox の画面へ</h1>
-  <p>このサイトは <strong>MyToybox</strong> の共有リンク先を案内するページです。共有されたリンクを iPhone などで利用すると、アプリまたは App Clip が起動し、該当する画面が表示されます。</p>
-  <p>パソコンやアプリが入っていない環境では、このような説明ページのままになることがあります。フル版を入手する場合は App Store からどうぞ。</p>
+  <h1 class="clip-section-title" data-i18n="home.intro_heading">{{ site.data.clip_i18n.ja.home.intro_heading | escape }}</h1>
+  <p>
+    <span data-i18n="home.intro_p1a">{{ site.data.clip_i18n.ja.home.intro_p1a | escape }}</span><strong>MyToybox</strong><span data-i18n="home.intro_p1b">{{ site.data.clip_i18n.ja.home.intro_p1b | escape }}</span>
+  </p>
+  <p data-i18n="home.intro_p2">{{ site.data.clip_i18n.ja.home.intro_p2 | escape }}</p>
   {% assign store_id = site.mytoybox.app_store_id | strip %}
   {% if store_id != "" %}
   <div class="clip-actions">
-    <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+    <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}"><span data-i18n="common.app_store">{{ site.data.clip_i18n.ja.common.app_store | escape }}</span></a>
   </div>
   {% endif %}
 </section>
 
 <details class="clip-dev-details">
-  <summary>開発者向けメモ</summary>
-  <p class="clip-muted">サイトの運用・AASA・画面追加手順は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">リポジトリの README</a> を参照してください。</p>
+  <summary data-i18n="home.dev_summary">{{ site.data.clip_i18n.ja.home.dev_summary | escape }}</summary>
+  <p class="clip-muted" data-i18n-html="home.dev_html">{{ site.data.clip_i18n.ja.home.dev_html }}</p>
 </details>

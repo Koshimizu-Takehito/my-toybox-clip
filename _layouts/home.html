@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>{{ page.title | escape }}</title>
+  {% include clip-locale-head.html %}
+  <title data-i18n="meta.title_home">{{ site.data.clip_i18n.ja.meta.title_home | escape }}</title>
   {% assign store_id = site.mytoybox.app_store_id | strip %}
   {% if store_id != "" %}
   <meta name="apple-itunes-app" content="app-id={{ store_id }}">
@@ -14,44 +15,46 @@
 <body>
   <main class="clip-main">
     <div id="clip-banner" class="clip-card clip-banner" aria-live="polite">
-      <h1 class="clip-section-title">共有リンク</h1>
+      <h1 class="clip-section-title" data-i18n="home.banner.title">{{ site.data.clip_i18n.ja.home.banner.title | escape }}</h1>
       <p id="clip-banner-text" class="clip-lead"></p>
       <div class="clip-actions">
         {% if store_id != "" %}
-        <a id="clip-banner-store" class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+        <a id="clip-banner-store" class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}"><span data-i18n="common.app_store">{{ site.data.clip_i18n.ja.common.app_store | escape }}</span></a>
         {% else %}
-        <p class="clip-muted">アプリの入手先の案内は現在準備中です。</p>
+        <p class="clip-muted" data-i18n="common.store_pending">{{ site.data.clip_i18n.ja.common.store_pending | escape }}</p>
         {% endif %}
-        <a class="clip-secondary-link" href="{{ '/' | relative_url }}">ホーム</a>
+        <a class="clip-secondary-link" href="{{ '/' | relative_url }}"><span data-i18n="common.home">{{ site.data.clip_i18n.ja.common.home | escape }}</span></a>
       </div>
     </div>
 
     {% if store_id != "" %}
     <section class="clip-card clip-home-cta">
-      <p class="clip-lead">{{ site.mytoybox.app_name | default: "MyToybox" | escape }} のフル版は App Store から入手できます。</p>
-      <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+      <p class="clip-lead"><span class="clip-app-name">{{ site.mytoybox.app_name | default: "MyToybox" | escape }}</span><span data-i18n="home.cta_suffix">{{ site.data.clip_i18n.ja.home.cta_suffix | escape }}</span></p>
+      <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}"><span data-i18n="common.app_store">{{ site.data.clip_i18n.ja.common.app_store | escape }}</span></a>
     </section>
     {% endif %}
 
     {{ content }}
+
+    {% include clip-lang-switch.html %}
   </main>
   <script>
-    (function () {
-      var knownIds = {{ site.data.clip_screens.ids | jsonify }};
-      var known = Object.create(null);
-      for (var i = 0; i < knownIds.length; i++) known[knownIds[i]] = true;
-      var params = new URLSearchParams(window.location.search);
-      var screen = params.get("screen");
-      if (!screen) return;
+    window.__CLIP_KNOWN_IDS__ = {{ site.data.clip_screens.ids | jsonify }};
+    document.addEventListener("cliplocaleapplied", function (e) {
+      var locale = e.detail.locale;
+      var screen = new URLSearchParams(window.location.search).get("screen");
       var banner = document.getElementById("clip-banner");
       var textEl = document.getElementById("clip-banner-text");
+      if (!screen || !banner || !textEl || !window.clipLocale) return;
+      var known = Object.create(null);
+      var ids = window.__CLIP_KNOWN_IDS__ || [];
+      for (var i = 0; i < ids.length; i++) known[ids[i]] = true;
       var isKnown = Object.prototype.hasOwnProperty.call(known, screen);
-      var msg = isKnown
-        ? "このリンクは、MyToybox の特定の画面へ進むためのものです。対応する端末ではアプリが起動し、当該の画面が表示されます。アプリがない場合はこの案内ページのままです。"
-        : "このリンクは特定の画面を指定しています。アプリ側に該当する画面がない場合は、一覧など別の画面へ進むことがあります。";
-      textEl.textContent = msg;
+      var key = isKnown ? "home.banner.known" : "home.banner.unknown";
+      textEl.textContent = window.clipLocale.getString(locale, key);
       banner.classList.add("is-visible");
-    })();
+    });
   </script>
+  <script defer src="{{ '/assets/js/clip-locale.js' | relative_url }}"></script>
 </body>
 </html>

@@ -14,15 +14,15 @@
 <body>
   <main class="clip-main">
     <div id="clip-banner" class="clip-card clip-banner" aria-live="polite">
-      <h1 class="clip-section-title">MyToybox のデモリンク</h1>
+      <h1 class="clip-section-title">デモへのリンク</h1>
       <p id="clip-banner-text" class="clip-lead"></p>
       <div class="clip-actions">
         {% if store_id != "" %}
         <a id="clip-banner-store" class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
         {% else %}
-        <p class="clip-muted">フルアプリは App Store から入手できます。<code>_config.yml</code> の <code>mytoybox.app_store_id</code> に Apple ID を設定すると、ここにストアへのボタンが表示されます。</p>
+        <p class="clip-muted">アプリの入手先の案内は現在準備中です。</p>
         {% endif %}
-        <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">my-toybox（GitHub）</a>
+        <a class="clip-secondary-link" href="{{ '/' | relative_url }}">ホーム</a>
       </div>
     </div>
 
@@ -37,7 +37,9 @@
   </main>
   <script>
     (function () {
-      var known = { dotsSpinnerDemoScreen: true, ringSliderScreen: true, badgeDemoScreen: true };
+      var knownIds = {{ site.data.clip_screens.ids | jsonify }};
+      var known = Object.create(null);
+      for (var i = 0; i < knownIds.length; i++) known[knownIds[i]] = true;
       var params = new URLSearchParams(window.location.search);
       var screen = params.get("screen");
       if (!screen) return;
@@ -45,9 +47,9 @@
       var textEl = document.getElementById("clip-banner-text");
       var isKnown = Object.prototype.hasOwnProperty.call(known, screen);
       var msg = isKnown
-        ? "クエリ <code>screen=" + screen + "</code> で App Clip / 本アプリを開くためのリンクです。iOS で開くと該当デモへ遷移します。アプリがない場合はここに留まります。"
-        : "クエリ <code>screen=" + screen + "</code> が指定されています。対応するデモがアプリ内にない場合は一覧にフォールバックします。";
-      textEl.innerHTML = msg;
+        ? "このリンクは MyToybox の特定のデモを開くためのものです。iPhone で開くと該当するデモへ進みます。アプリがない場合はこのページのままです。"
+        : "このリンクは特定のデモを指定しています。アプリ側に該当するデモがない場合は、一覧など別の画面へ進むことがあります。";
+      textEl.textContent = msg;
       banner.classList.add("is-visible");
     })();
   </script>

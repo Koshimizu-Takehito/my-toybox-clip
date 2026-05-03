@@ -66,18 +66,6 @@ body {
   letter-spacing: -0.02em;
 }
 
-.clip-hero__badge {
-  display: inline-block;
-  margin: 0 0 1rem;
-  padding: 0.2rem 0.55rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--clip-muted);
-  background: var(--clip-code-bg);
-  border-radius: 6px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
 .clip-lead {
   margin: 0 0 1rem;
   color: var(--clip-text);
@@ -187,4 +175,29 @@ code {
 
 .clip-home-cta .clip-primary-cta {
   margin-top: 0.25rem;
+}
+
+.clip-dev-details {
+  margin-top: 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--clip-border);
+  font-size: 0.9rem;
+  color: var(--clip-muted);
+}
+
+.clip-dev-details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--clip-text);
+  margin-bottom: 0.5rem;
+}
+
+.clip-dev-details summary:focus {
+  outline: 3px solid var(--clip-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.clip-dev-details .clip-muted {
+  margin-bottom: 0;
 }

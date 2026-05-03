@@ -1,0 +1,6 @@
+# `?screen=` バナー用の既知 ID。新デモ追加時は各 screen の index と揃え、
+# my-toybox の RouteCatalog.availableRoutes と手動同期すること。
+ids:
+  - dotsSpinnerDemoScreen
+  - ringSliderScreen
+  - badgeDemoScreen

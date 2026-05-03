@@ -15,19 +15,22 @@
   <main class="clip-main">
     <article class="clip-card clip-hero">
       <h1 class="clip-hero__title">{{ site.mytoybox.app_name | default: "MyToybox" | escape }}</h1>
-      <span class="clip-hero__badge">{{ page.clip_screen_id | escape }}</span>
-      <p class="clip-lead">この URL は <strong>App Clip・本アプリ</strong>の Universal Links 用です。iOS で開くと、このデモへ遷移できます。</p>
-      <p class="clip-muted">アプリが入っていない場合は、このページが表示されます。</p>
+      <p class="clip-lead">このリンクは <strong>MyToybox</strong> のお試しデモを開くためのものです。iPhone で開くと、この内容に対応する画面へ進みます。</p>
+      <p class="clip-muted">アプリが入っていない場合は、この案内ページのままになります。</p>
 
       <div class="clip-actions">
         {% if store_id != "" %}
         <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
         {% else %}
-        <p class="clip-muted">フルアプリの App Store リンクは、リポジトリの <code>_config.yml</code> に <code>mytoybox.app_store_id</code>（数値の Apple ID）を設定すると表示されます。</p>
+        <p class="clip-muted">アプリの入手先の案内は現在準備中です。</p>
         {% endif %}
-        <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">ソース（GitHub）</a>
         <a class="clip-secondary-link" href="{{ '/' | relative_url }}">ホーム</a>
       </div>
+
+      <details class="clip-dev-details">
+        <summary>開発者向け</summary>
+        <p class="clip-muted">ソースや運用手順は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">README</a>、アプリ本体は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">my-toybox（GitHub）</a> を参照してください。</p>
+      </details>
     </article>
   </main>
 </body>

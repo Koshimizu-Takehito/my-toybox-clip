@@ -4,9 +4,18 @@ title: "MyToybox App Clip"
 ---
 
 <section class="clip-card">
-  <h1 class="clip-section-title">このサイトについて</h1>
-  <p>このサイトは <strong>MyToybox</strong> の App Clip / Universal Link 用ランディングです。デモごとの URL は <code>/&lt;screen-id&gt;/</code> 形式です（例: <code>/ringSliderScreen/</code>）。</p>
-  <p>Associated Domains 用の <code>apple-app-site-association</code> は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/.well-known">Koshimizu-Takehito/.well-known</a> リポジトリで配信しています。</p>
-  <p>新しいデモページを追加するときは、<a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox/blob/main/Packages/Sources/MyToyboxScreens/RouteCatalog.swift">my-toybox の <code>RouteCatalog.availableRoutes</code></a> の <code>Screen.rawValue</code> と同じディレクトリ名で <code>index.html</code>（<code>layout: clip_landing</code>）を置いてください。</p>
-  <p><a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip">ソース（GitHub）</a></p>
+  <h1 class="clip-section-title">MyToybox のデモへ</h1>
+  <p>このサイトは <strong>MyToybox</strong> のお試しデモへつなぐ案内です。iPhone で共有されたリンクを開くと、アプリや App Clip が起動して該当のデモ画面へ進みます。</p>
+  <p>パソコンやアプリが入っていない環境では、このような説明ページのままになることがあります。フル版を入れたい場合は App Store からどうぞ。</p>
+  {% assign store_id = site.mytoybox.app_store_id | strip %}
+  {% if store_id != "" %}
+  <div class="clip-actions">
+    <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+  </div>
+  {% endif %}
 </section>
+
+<details class="clip-dev-details">
+  <summary>開発者向けメモ</summary>
+  <p class="clip-muted">サイトの運用・AASA・画面追加手順は <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox-clip/blob/main/README.md">リポジトリの README</a> を参照してください。</p>
+</details>

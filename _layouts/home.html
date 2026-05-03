@@ -14,7 +14,7 @@
 <body>
   <main class="clip-main">
     <div id="clip-banner" class="clip-card clip-banner" aria-live="polite">
-      <h1 class="clip-section-title">デモへのリンク</h1>
+      <h1 class="clip-section-title">共有リンク</h1>
       <p id="clip-banner-text" class="clip-lead"></p>
       <div class="clip-actions">
         {% if store_id != "" %}
@@ -47,8 +47,8 @@
       var textEl = document.getElementById("clip-banner-text");
       var isKnown = Object.prototype.hasOwnProperty.call(known, screen);
       var msg = isKnown
-        ? "このリンクは MyToybox の特定のデモを開くためのものです。iPhone で開くと該当するデモへ進みます。アプリがない場合はこのページのままです。"
-        : "このリンクは特定のデモを指定しています。アプリ側に該当するデモがない場合は、一覧など別の画面へ進むことがあります。";
+        ? "このリンクは、MyToybox の特定の画面へ進むためのものです。対応する端末ではアプリが起動し、当該の画面が表示されます。アプリがない場合はこの案内ページのままです。"
+        : "このリンクは特定の画面を指定しています。アプリ側に該当する画面がない場合は、一覧など別の画面へ進むことがあります。";
       textEl.textContent = msg;
       banner.classList.add("is-visible");
     })();

@@ -1,0 +1,7 @@
+theme: jekyll-theme-midnight
+url: "https://koshimizu-takehito.github.io"
+baseurl: "/my-toybox-clip"
+
+mytoybox:
+  app_name: "MyToybox"
+  app_store_id: "6743644224"

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{{ page.title | escape }}</title>
+  {% assign store_id = site.mytoybox.app_store_id | strip %}
+  {% if store_id != "" %}
+  <meta name="apple-itunes-app" content="app-id={{ store_id }}">
+  {% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/clip-landing.css' | relative_url }}">
+</head>
+<body>
+  <main class="clip-main">
+    <article class="clip-card clip-hero">
+      <h1 class="clip-hero__title">{{ site.mytoybox.app_name | default: "MyToybox" | escape }}</h1>
+      <span class="clip-hero__badge">{{ page.clip_screen_id | escape }}</span>
+      <p class="clip-lead">この URL は <strong>App Clip・本アプリ</strong>の Universal Links 用です。iOS で開くと、このデモへ遷移できます。</p>
+      <p class="clip-muted">アプリが入っていない場合は、このページが表示されます。</p>
+
+      <div class="clip-actions">
+        {% if store_id != "" %}
+        <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+        {% else %}
+        <p class="clip-muted">フルアプリの App Store リンクは、リポジトリの <code>_config.yml</code> に <code>mytoybox.app_store_id</code>（数値の Apple ID）を設定すると表示されます。</p>
+        {% endif %}
+        <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">ソース（GitHub）</a>
+        <a class="clip-secondary-link" href="{{ '/' | relative_url }}">ホーム</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{{ page.title | escape }}</title>
+  {% assign store_id = site.mytoybox.app_store_id | strip %}
+  {% if store_id != "" %}
+  <meta name="apple-itunes-app" content="app-id={{ store_id }}">
+  {% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/clip-landing.css' | relative_url }}">
+</head>
+<body>
+  <main class="clip-main">
+    <div id="clip-banner" class="clip-card clip-banner" aria-live="polite">
+      <h1 class="clip-section-title">MyToybox のデモリンク</h1>
+      <p id="clip-banner-text" class="clip-lead"></p>
+      <div class="clip-actions">
+        {% if store_id != "" %}
+        <a id="clip-banner-store" class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+        {% else %}
+        <p class="clip-muted">フルアプリは App Store から入手できます。<code>_config.yml</code> の <code>mytoybox.app_store_id</code> に Apple ID を設定すると、ここにストアへのボタンが表示されます。</p>
+        {% endif %}
+        <a class="clip-secondary-link" href="https://github.com/Koshimizu-Takehito/my-toybox">my-toybox（GitHub）</a>
+      </div>
+    </div>
+
+    {% if store_id != "" %}
+    <section class="clip-card clip-home-cta">
+      <p class="clip-lead">{{ site.mytoybox.app_name | default: "MyToybox" | escape }} のフル版は App Store から入手できます。</p>
+      <a class="clip-primary-cta" href="https://apps.apple.com/app/id{{ store_id }}">App Store で見る</a>
+    </section>
+    {% endif %}
+
+    {{ content }}
+  </main>
+  <script>
+    (function () {
+      var known = { dotsSpinnerDemoScreen: true, ringSliderScreen: true, badgeDemoScreen: true };
+      var params = new URLSearchParams(window.location.search);
+      var screen = params.get("screen");
+      if (!screen) return;
+      var banner = document.getElementById("clip-banner");
+      var textEl = document.getElementById("clip-banner-text");
+      var isKnown = Object.prototype.hasOwnProperty.call(known, screen);
+      var msg = isKnown
+        ? "クエリ <code>screen=" + screen + "</code> で App Clip / 本アプリを開くためのリンクです。iOS で開くと該当デモへ遷移します。アプリがない場合はここに留まります。"
+        : "クエリ <code>screen=" + screen + "</code> が指定されています。対応するデモがアプリ内にない場合は一覧にフォールバックします。";
+      textEl.innerHTML = msg;
+      banner.classList.add("is-visible");
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* Clip / home landing — system-ish, accessible tap targets, light + dark */
+
+:root {
+  --clip-bg: #f5f5f7;
+  --clip-surface: #ffffff;
+  --clip-text: #1d1d1f;
+  --clip-muted: #6e6e73;
+  --clip-border: rgba(0, 0, 0, 0.1);
+  --clip-accent: #0071e3;
+  --clip-accent-hover: #0077ed;
+  --clip-focus: #0071e3;
+  --clip-code-bg: rgba(0, 0, 0, 0.06);
+  --clip-radius: 12px;
+  --clip-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clip-bg: #1c1c1e;
+    --clip-surface: #2c2c2e;
+    --clip-text: #f5f5f7;
+    --clip-muted: #a1a1a6;
+    --clip-border: rgba(255, 255, 255, 0.12);
+    --clip-accent: #0a84ff;
+    --clip-accent-hover: #409cff;
+    --clip-focus: #0a84ff;
+    --clip-code-bg: rgba(255, 255, 255, 0.1);
+    --clip-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: var(--clip-text);
+  background: var(--clip-bg);
+}
+
+.clip-main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.clip-card {
+  background: var(--clip-surface);
+  border: 1px solid var(--clip-border);
+  border-radius: var(--clip-radius);
+  box-shadow: var(--clip-shadow);
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.clip-hero__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.clip-hero__badge {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--clip-muted);
+  background: var(--clip-code-bg);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.clip-lead {
+  margin: 0 0 1rem;
+  color: var(--clip-text);
+}
+
+.clip-muted {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--clip-muted);
+}
+
+.clip-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 480px) {
+  .clip-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.clip-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--clip-accent);
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.clip-primary-cta:hover {
+  background: var(--clip-accent-hover);
+  color: #fff;
+}
+
+.clip-primary-cta:focus {
+  outline: 3px solid var(--clip-focus);
+  outline-offset: 2px;
+}
+
+.clip-secondary-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--clip-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.clip-secondary-link:hover {
+  color: var(--clip-accent-hover);
+}
+
+.clip-secondary-link:focus {
+  outline: 3px solid var(--clip-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1.clip-section-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 0.85rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+code {
+  font-size: 0.88em;
+  padding: 0.12em 0.35em;
+  background: var(--clip-code-bg);
+  border-radius: 4px;
+}
+
+.clip-banner {
+  display: none;
+  margin-bottom: 1.25rem;
+}
+
+.clip-banner.is-visible {
+  display: block;
+}
+
+.clip-banner .clip-section-title {
+  margin-bottom: 0.5rem;
+}
+
+.clip-home-cta .clip-primary-cta {
+  margin-top: 0.25rem;
+}
